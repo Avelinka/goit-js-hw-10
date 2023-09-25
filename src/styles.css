@@ -33,13 +33,14 @@ img {
 
 .breed-select {
   max-width: 240px;
-  margin: 80px auto 40px;
+  margin: 80px auto 120px;
 }
 
 .loader {
-  text-align: center;
-  margin-top: 80px;
-  margin-bottom: 40px;
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .loader-span {
   width: 32px;
