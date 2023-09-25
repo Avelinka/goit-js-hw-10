@@ -6,18 +6,15 @@
     <title>Homework 10</title>
   </head>
   <body>
-    <!-- <select class="breed-select"></select> -->
-    <select
-      id="breedSelect"
-      class="breed-select"
-      data-placeholder="Select a breed..."
-    ></select>
+    <select id="breedSelect" class="breed-select">
+      <option data-placeholder="true"></option>
+    </select>
     <p class="loader is-hidden">
       <span class="loader-span"></span> Loading data, please wait...
     </p>
-    <!-- <p class="error is-hidden">
+    <p class="error is-hidden">
       Oops! Something went wrong! Try reloading the page!
-    </p> -->
+    </p>
     <div class="cat-info"></div>
 
     <script src="index.js" type="module"></script>

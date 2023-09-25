@@ -1,4 +1,5 @@
 import './styles.css';
+import './slimselect.css';
 
 import SlimSelect from 'slim-select';
 import Notiflix from 'notiflix';
@@ -6,7 +7,6 @@ import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 
 const breedSelect = document.querySelector('#breedSelect');
-// const breedSelect = document.querySelector('.breed-select');
 const catInfoDiv = document.querySelector('div.cat-info');
 const loader = document.querySelector('.loader');
 
@@ -47,6 +47,12 @@ window.addEventListener('load', () => {
   fetchBreeds()
     .then(breeds => {
       markupBreedsSelect(breeds);
+      new SlimSelect({
+        select: '#breedSelect',
+        settings: {
+          placeholderText: 'Choose a breed...',
+        },
+      });
       showSelect();
       hideLoader();
     })
@@ -58,6 +64,7 @@ window.addEventListener('load', () => {
       console.error('Error loading breeds:', error);
       hideLoader();
       hideSelect();
+      catInfoDiv.innerHTML = '';
     });
 });
 
@@ -97,6 +104,7 @@ breedSelect.addEventListener('change', () => {
         console.error('Error retrieving cat information:', error);
         hideLoader();
         hideSelect();
+        catInfoDiv.innerHTML = '';
       });
   } else {
     catInfoDiv.innerHTML = '';

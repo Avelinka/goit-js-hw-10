@@ -32,14 +32,7 @@ img {
 }
 
 .breed-select {
-  display: block;
-  width: 240px;
-  height: 45px;
-  background-color: #e9f0ef;
-  border-radius: 20px;
-  padding-left: 12px;
-  font-weight: 500;
-  font-size: 20px;
+  max-width: 240px;
   margin: 80px auto 40px;
 }
 
