@@ -33,17 +33,8 @@ const hideLoader = () => {
   loader.classList.add('is-hidden');
 };
 
-const showSelect = () => {
-  breedSelect.classList.remove('is-hidden');
-};
-
-const hideSelect = () => {
-  breedSelect.classList.add('is-hidden');
-};
-
 window.addEventListener('load', () => {
   showLoader();
-  hideSelect();
   fetchBreeds()
     .then(breeds => {
       markupBreedsSelect(breeds);
@@ -53,7 +44,6 @@ window.addEventListener('load', () => {
           placeholderText: 'Choose a breed...',
         },
       });
-      showSelect();
       hideLoader();
     })
     .catch(error => {
@@ -63,7 +53,6 @@ window.addEventListener('load', () => {
       );
       console.error('Error loading breeds:', error);
       hideLoader();
-      hideSelect();
       catInfoDiv.innerHTML = '';
     });
 });
@@ -84,7 +73,6 @@ breedSelect.addEventListener('change', () => {
 
   if (selectedBreedId) {
     showLoader();
-    hideSelect();
     fetchCatByBreed(selectedBreedId)
       .then(catData => {
         const breedName = catData[0].breeds[0].name;
@@ -94,7 +82,6 @@ breedSelect.addEventListener('change', () => {
 
         markupCatInfo(breedName, description, temperament, imageUrl);
         hideLoader();
-        showSelect();
       })
       .catch(error => {
         Notiflix.Notify.failure(
@@ -103,7 +90,6 @@ breedSelect.addEventListener('change', () => {
         );
         console.error('Error retrieving cat information:', error);
         hideLoader();
-        hideSelect();
         catInfoDiv.innerHTML = '';
       });
   } else {
